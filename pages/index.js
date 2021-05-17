@@ -4,8 +4,15 @@ import Image from 'next/image'
 import CategoryCard from '../components/CategoryCard'
 import LineSub from '../components/LineSub'
 import Footer from '../components/Footer'
+import { useRef } from 'react'
 
 export default function Home() {
+  let app = useRef()
+
+  const LoginForm = () => {
+    
+  }
+
   return (
     <div className={styles.container}>
       <Head>
@@ -16,7 +23,23 @@ export default function Home() {
 
       <div className={styles.hero}>
         <div className={styles.logindiv}>
-          <p className={styles.login}>LOG IN</p>
+          <p className={styles.login} onClick={() => LoginForm()} >LOG IN</p>
+          <form className={styles.loginform}>
+            <h4 className={styles.formtitle}>Log In</h4>
+            <label>EMAIL</label><br/>
+            <div className={styles.input}>
+              <input className={styles.loginput} type="email" required="true" name="email" /><br/>
+            </div>
+            <label>PASSWORD</label><br/>
+            <div className={styles.input}>
+              <input className={styles.loginput} type="password" required="true" name="password" />
+            </div>
+            <p>Forgot your email or password?</p>
+            <div className={styles.logcover}>
+              <button type="submit" className={styles.loginbutton}>LOG IN</button>
+            </div>
+            <p>Don't have an account? Sign Up</p>
+          </form>
         </div>
 
         <div className={styles.heroinfo}>
@@ -72,21 +95,21 @@ export default function Home() {
                 <p className={styles.headmp}><b>MOST POPULAR</b></p>
                 <h3 className={styles.headtitle}>Hulu</h3>
                 <h4 className={styles.headoffer}>30 DAY FREE TRIAL</h4>
-                <button className={styles.headbutton}><b>TRY FOR FREE $0</b></button>
+                <button className={styles.headbutton}><b>TRY FOR $0</b></button>
               
             </div>
             <div className={[styles.headcard, styles.headm, styles.item2].join(' ')}>
               
                 <h3 className={styles.headtitle}>Hulu (No Ads)</h3>
                 <h4 className={styles.headoffer}>30 DAY FREE TRIAL</h4>
-                <button className={styles.headbutton}><b>TRY FOR FREE $0</b></button>
+                <button className={styles.headbutton}><b>TRY FOR $0</b></button>
               
             </div>
             <div className={[styles.headcard, styles.item3].join(' ')}>
               
                 <h3 className={styles.headtitle}>Hulu + Live TV</h3>
                 <h4 className={styles.headoffer}>30 DAY FREE TRIAL</h4>
-                <button className={styles.headbutton}><b>TRY FOR FREE $0</b></button>
+                <button className={styles.headbutton}><b>TRY FOR $0</b></button>
               
             </div>
           </div>

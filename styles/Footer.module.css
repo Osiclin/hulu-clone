@@ -53,3 +53,30 @@
         grid-template-columns: auto;
     }
 }
+
+@media screen and (max-width: 700px) {
+    .rightinnerwrapper{
+        padding-bottom: 2rem;
+        flex-direction: column;
+        gap: unset;
+    }
+
+    .links{
+        flex-direction: column;
+        display: none;
+    }
+
+    #help{
+        display: none;
+    }
+
+    #about{
+        display: none;
+    }
+
+    .wborder{
+        border-bottom: 1px solid black;
+    }
+
+    
+}

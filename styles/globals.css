@@ -36,3 +36,10 @@ p{
   font-size: .6rem;
 }
 
+label{
+  font-size: .5rem;
+}
+
+input{
+  outline: none;
+}

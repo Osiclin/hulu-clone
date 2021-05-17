@@ -37,10 +37,10 @@ export default function Footer() {
                 </div>
 
                 <div className={styles.rightinnerwrapper}>
-                    <div>
+                    <div className={styles.wborder}>
                         <h5 className={styles.sect}>HELP</h5>
                         
-                            <ul className={styles.list}>
+                            <ul className={styles.list} id={styles.help}>
                                 <li>Account & Billing</li>
                                 <li>Plans & Pricing</li>
                                 <li>Supported Devices</li>
@@ -48,9 +48,9 @@ export default function Footer() {
                             </ul>
                     </div>
 
-                    <div>
+                    <div className={styles.wborder}>
                         <h5 className={styles.sect}>ABOUT</h5>
-                        <ul className={styles.list}>
+                        <ul className={styles.list} id={styles.about}>
                             <li>Press</li>
                             <li>Jobs</li>
                             <li>Contact</li>
