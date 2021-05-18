@@ -1,0 +1,63 @@
+.container{
+    background-color: black;
+    color: white;
+    position: relative;
+    z-index: 2;
+}
+
+.pagetitle{
+    font-size: .7rem;
+    border-bottom: 1px solid white;
+    padding: .5rem;
+    text-align: center;
+}
+
+.pagewrap{
+    
+    background-image: url('../public/wallpapers.jpg');
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+.pagedetails{
+    
+    bottom: 0;
+    padding: 1rem;
+    background-image: linear-gradient(transparent, black);
+}
+
+.wrapper{
+    padding: 0 1rem;
+}
+
+.cardtitle{
+    padding-bottom: 0;
+    font-weight: 800;
+}
+
+.cardrating{
+    font-size: .5rem;
+}
+
+.carddetails{
+    font-size: 0.5rem;
+}
+
+.details{
+    margin: 0;
+}
+
+.cardwrapper{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 0 0 2rem;
+}
+
+.cardwrapper>div{
+    flex-basis: 300px;
+}
+
+.innercardwrapper{
+    padding: 1rem;
+}

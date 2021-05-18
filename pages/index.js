@@ -2,16 +2,41 @@ import Head from 'next/head'
 import styles from '../styles/Home.module.css'
 import Image from 'next/image'
 import CategoryCard from '../components/CategoryCard'
+import CategoryDisplay from '../components/CategoryDisplay'
 import LineSub from '../components/LineSub'
 import Footer from '../components/Footer'
-import { useRef } from 'react'
+import { useEffect, useRef, useState } from 'react'
 
-export default function Home() {
-  let app = useRef()
+export default function Home({ data }) {
+  const [movies, setMovies] = useState(data)
+
+  // useEffect(() => {
+  //   let m
+  //   for (let i = 0; i < 7; i++) {
+  //     setMovies(movies.foreach(dat => m.push(dat)))
+  //   }
+  //   console.log(m)
+  // })
+
+  
+  
+
+  let login = useRef(null)
+  let cont = useRef(null)
 
   const LoginForm = () => {
-    
+    if (window.innerWidth > 900) {
+      login.style.display = 'block'
+    }
   }
+
+  const closeLogin = () => {
+    if (window.innerWidth > 900) {
+      login.style.display = 'none'
+    }
+  }
+
+
 
   return (
     <div className={styles.container}>
@@ -24,7 +49,8 @@ export default function Home() {
       <div className={styles.hero}>
         <div className={styles.logindiv}>
           <p className={styles.login} onClick={() => LoginForm()} >LOG IN</p>
-          <form className={styles.loginform}>
+          <form className={styles.loginform} ref={el => login = el}>
+            <p className={styles.close} ref={el => cont = el} onClick={() => closeLogin()}>x</p>
             <h4 className={styles.formtitle}>Log In</h4>
             <label>EMAIL</label><br/>
             <div className={styles.input}>
@@ -44,7 +70,9 @@ export default function Home() {
 
         <div className={styles.heroinfo}>
           <p className={styles.try}>TRY UP TO ONE MONTH FREE</p>
-          <Image src={'https://hulu-matchmaker.s3.us-west-2.amazonaws.com/2020-08/Hulu_Logo-01_newgreen.png'} loading="eager" width={270} height={90} />
+          <div className={styles.logodiv}>
+            <Image src={'https://hulu-matchmaker.s3.us-west-2.amazonaws.com/2020-08/Hulu_Logo-01_newgreen.png'} loading="eager" width={270} height={90} />
+          </div>
           <p className={styles.herowatch}>Watch thousands of shows and movies, with plans starting at $5.99/month.</p>
           <p className={styles.herohbo}>HBO Max™, SHOWTIME®, CINEMAX® and STARZ® available as add-ons.</p>
           <button className={styles.trialbutton}>START YOUR FREE TRIAL</button>
@@ -57,7 +85,7 @@ export default function Home() {
           </div>
           <div className={styles.herobundle}>
             <p className={styles.herobundle1}>BUNDLE WITH ANY HULU PLAN & SAVE</p>
-            <p className={styles.herobundle2}>Get Hulu, Disney+, and ESPN+ starting at $13.99/month.</p>
+            <p className={styles.herobundle2}><span className={styles.gettext}>Get Hulu, Disney+, and ESPN+ </span>starting at $13.99/month.</p>
             <a href="#" className={styles.herobundledetails}>Details</a>
           </div>
           <div className={styles.getbundlediv}>
@@ -81,7 +109,7 @@ export default function Home() {
           <CategoryCard catimg='https://www.hulu.com/static/hitch/s3/attachments/cklms8tz01g9l1ub0lnnjocwk-cityonahill-category-tile-294x450-1x-1.jpg' tag="Add-on" category="Premiums" />
         </div>
       </div>
-      
+      <CategoryDisplay data={movies} />      
       <div className={styles.plans}>
         <div className={styles.planswrapper}>
           <div className={styles.head}>
@@ -134,9 +162,9 @@ export default function Home() {
             </p>
           </div>
 
-          <div>
-            <h5>Available Add-ons</h5>
-            <p>Add-ons available at an additional cost.<br/>
+          <div >
+            <h5 className={styles.available}>Available Add-ons</h5>
+            <p className={styles.available}>Add-ons available at an additional cost.<br/>
                Add them up after you sign up for Hulu.
             </p>
             <LineSub title="HBO Max™" price1="&#10003;" price2="&#10003;" price3="&#10003;" />
@@ -156,4 +184,15 @@ export default function Home() {
       <Footer />
     </div>
   )
+}
+
+export async function getServerSideProps() {
+    const res = await fetch('https://api.themoviedb.org/3/movie/now_playing?api_key=a9a890a1db5db1cb0dfbcdffbce0b762&language=en-US&page=1')
+    const data = await res.json()
+
+    return{
+      props: {
+        data
+      }
+    }
 }

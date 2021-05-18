@@ -1,6 +1,7 @@
 .container{
   margin: 0;
   padding: 0;
+  position: relative;
 }
 
 .hero{
@@ -9,6 +10,11 @@
   background-position: center;
   background-repeat: no-repeat;
   color: white;
+}
+
+.logodiv{
+  width: 35%;
+  margin: 0 auto;
 }
 
 .logindiv{
@@ -54,7 +60,16 @@
 }
 
 .input{
-  margin-top: -15px;
+  margin-top: -10px;
+  padding: 0;
+}
+
+.close{
+  float: right;
+  position: absolute;
+  top: 0;
+  right: 20px;
+  font-weight: 700;
 }
 
 .formtitle{
@@ -239,10 +254,6 @@
   margin-top: 1rem;
 }
 
-.headselect{
-  padding: 0;
-}
-
 .topdetails{
   font-size: .65rem;
   margin-bottom: 0;
@@ -332,6 +343,32 @@
 
   .plans{
     padding: 0;
+  }
+
+  .gettext{
+    display: none;
+  }
+
+  .loginform{
+    display: none;
+  }
+
+  .login{
+    visibility: hidden;
+  }
+
+  .login::after{
+    content: 'Menu';
+    font-weight: 700;
+    visibility: visible;
+  }
+
+  .headselect, .available{
+    padding: 0 2rem;
+  }
+  
+  .available{
+    text-align: center;
   }
 }
 
