@@ -273,7 +273,7 @@
 }
 
 .headbutton{
-  width: max-content;
+  font-size: .45rem;
   background-color: black;
   color: white;
   outline: none;
@@ -329,6 +329,10 @@
     align-items: center;
     padding-bottom: 1rem;
   }
+
+  .plans{
+    padding: 0;
+  }
 }
 
 @media screen and (max-width: 870px) {
@@ -348,5 +352,15 @@
 
   .bottomhero{
     flex-direction: column;
+  }
+}
+
+@media screen and (max-width: 434px) {
+  .headcard{
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: center;
+    padding: 0 0 .4rem;
+    text-align: center;
   }
 }

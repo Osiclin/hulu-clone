@@ -28,11 +28,11 @@ export default function Home() {
             <h4 className={styles.formtitle}>Log In</h4>
             <label>EMAIL</label><br/>
             <div className={styles.input}>
-              <input className={styles.loginput} type="email" required="true" name="email" /><br/>
+              <input className={styles.loginput} type="email" required name="email" /><br/>
             </div>
             <label>PASSWORD</label><br/>
             <div className={styles.input}>
-              <input className={styles.loginput} type="password" required="true" name="password" />
+              <input className={styles.loginput} type="password" required name="password" />
             </div>
             <p>Forgot your email or password?</p>
             <div className={styles.logcover}>
