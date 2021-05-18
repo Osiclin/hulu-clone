@@ -9,18 +9,6 @@ import { useEffect, useRef, useState } from 'react'
 
 export default function Home({ data }) {
   const [movies, setMovies] = useState(data)
-
-  // useEffect(() => {
-  //   let m
-  //   for (let i = 0; i < 7; i++) {
-  //     setMovies(movies.foreach(dat => m.push(dat)))
-  //   }
-  //   console.log(m)
-  // })
-
-  
-  
-
   let login = useRef(null)
   let cont = useRef(null)
 

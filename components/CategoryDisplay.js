@@ -1,5 +1,4 @@
 import Image from 'next/image'
-import { useEffect, useState } from 'react'
 import styles from '../styles/CategoryDisplay.module.css'
 
 export default function CategoryDisplay({ data }) {
@@ -11,6 +10,7 @@ export default function CategoryDisplay({ data }) {
     return(
         <div className={styles.container}>
             <div className={styles.pagetitle}>Movies</div>
+            <div className={styles.close}>x</div>
                 <div className={styles.wrapper}>
                     <div className={styles.pagewrap}> 
                         <div className={styles.pagedetails}>
@@ -19,7 +19,7 @@ export default function CategoryDisplay({ data }) {
                         </div>
                     </div>
                     <div>
-                        <h3>head</h3>
+                        <h3 className={styles.latest}>Latest</h3>
                         <div className={styles.cardwrapper}>
                             {
                                 movies.map((movie, index) => <div key={index} className={styles.innercardwrapper}>

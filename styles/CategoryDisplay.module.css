@@ -1,8 +1,14 @@
 .container{
+    display: none;
+    width: 80%;
     background-color: black;
     color: white;
     position: relative;
     z-index: 2;
+    position: absolute;
+    top: 2%;
+    left: 50%;
+    transform: translate(-50%);
 }
 
 .pagetitle{
@@ -10,24 +16,20 @@
     border-bottom: 1px solid white;
     padding: .5rem;
     text-align: center;
+    background-color: rgba(128, 128, 128, 0.164);
 }
 
 .pagewrap{
     
-    background-image: url('../public/wallpapers.jpg');
-    background-size: contain;
+    background-image: url('/wallpapers.jpg');
+    background-size: cover;
     background-repeat: no-repeat;
 }
 
 .pagedetails{
-    
     bottom: 0;
     padding: 1rem;
     background-image: linear-gradient(transparent, black);
-}
-
-.wrapper{
-    padding: 0 1rem;
 }
 
 .cardtitle{
@@ -44,7 +46,9 @@
 }
 
 .details{
+    width: 570px;
     margin: 0;
+    font-size: .9rem;
 }
 
 .cardwrapper{
@@ -60,4 +64,32 @@
 
 .innercardwrapper{
     padding: 1rem;
+}
+
+.latest{
+    font-size: .8rem;
+}
+
+.close{
+    background-color: transparent;
+    position: absolute;
+    top: 0;
+    right: .5rem;
+}
+
+@media  screen and (max-width: 900px) {
+    .innercardwrapper{
+        padding: 0 .5rem 2rem;
+    }
+
+    .container{
+        top: 0;
+        width: 100%;
+        height: 100vh;
+        overflow: scroll;
+    }
+
+    .details{
+        width: 100%;
+    }
 }
