@@ -355,6 +355,7 @@
 .pagewrap{
   background-image: url('/wallpapers.jpg');
   background-size: cover;
+  background-position-x: center;
   background-repeat: no-repeat;
 }
 

@@ -3,17 +3,23 @@ import styles from '../styles/Home.module.css'
 import Image from 'next/image'
 import LineSub from '../components/LineSub'
 import Footer from '../components/Footer'
-import { useEffect, useRef, useState } from 'react'
+import { useRef, useState } from 'react'
 
 export default function Home({ data }) {
+  const [toggletext, setToggletext] = useState('Hide Add-ons')
   let login = useRef(null)
   let cont = useRef(null)
   let cd = useRef(null)
   let addons = useRef(null)
   
-
   const ToggleAddons = () => {
-    addons.style.display = 'none'
+    if (addons.style.display == 'block') {
+      addons.style.display = 'none'
+      setToggletext('Show Add-ons')
+    } else if (addons.style.display == 'none') {
+      addons.style.display = 'block'
+      setToggletext('Hide Add-ons')
+    }
   }
 
   //category card
@@ -240,7 +246,7 @@ export default function Home({ data }) {
             
           </div>
           <div>
-              <p className={styles.addons} onClick={() => ToggleAddons()}>Hide Add-ons</p>
+              <p className={styles.addons} onClick={() => ToggleAddons()}>{toggletext}</p>
             </div>
         </div>
       </div>
