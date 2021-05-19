@@ -10,7 +10,7 @@ export default function Home({ data }) {
   let login = useRef(null)
   let cd = useRef(null)
   let addons = useRef(null)
-
+  
   const ToggleAddons = () => {
     if (addons.style.display == 'block') {
       addons.style.display = 'none'
@@ -169,8 +169,8 @@ export default function Home({ data }) {
                                 )
                             }
                         </div>
-                    </div>
-                </div>
+                      </div>
+                  </div>
         </div>
       
       {/* <CategoryDisplay data={movies} ref={el => cd = el} />       */}
