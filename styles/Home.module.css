@@ -13,7 +13,7 @@
 }
 
 .logodiv{
-  width: 35%;
+  width: 42%;
   margin: 0 auto;
 }
 
@@ -36,7 +36,7 @@
   color: black;
   padding: 1.5rem;
   position: absolute;
-  top: 50%;
+  top: 8%;
   left: 50%;
   transform: translate(-50%, -50%);
   z-index: 2;
@@ -66,10 +66,10 @@
 
 .close{
   float: right;
-  position: absolute;
-  top: 0;
-  right: 20px;
-  font-weight: 700;
+}
+
+.close:hover, .loginclose:hover{
+  cursor: pointer;
 }
 
 .formtitle{
@@ -110,15 +110,22 @@
 .bottomhero{
   background-image: linear-gradient(318.68deg, #0F495C 0%, #0D3640 49.72%, #08141F 100%);
   display: flex;
-  flex-wrap: wrap;
   justify-content: space-between;
   align-items: center;
   height: 20%;
   padding: 1rem 2rem;
 }
 
+.bottomhero>div{
+  margin: 0 10px;
+}
+
 .herobundle{
   flex: .8;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  flex-basis: 50%;
 }
 
 .trial{
@@ -145,6 +152,7 @@
 }
 
 .getbundle{
+  width: max-content;
   background-color: transparent;
   color: white;
   border: 2px solid white;
@@ -158,6 +166,8 @@
 .herobundle1{
   color: #27a387;
   font-size: .5rem;
+  margin-top: 0;
+  
 }
 
 .herobundle2{
@@ -284,6 +294,7 @@
 }
 
 .headbutton{
+  width: max-content;
   font-size: .45rem;
   background-color: black;
   color: white;
@@ -312,6 +323,123 @@
   border-top: 1px solid rgba(128, 128, 128, 0.226);
 }
 
+.threelogos{
+  width: 25%;
+}
+
+
+
+.catcontainer{
+  display: none;
+  width: 80%;
+  background-color: black;
+  color: white;
+  position: relative;
+  z-index: 2;
+  position: absolute;
+  top: 2%;
+  left: 50%;
+  transform: translate(-50%);
+}
+
+.pagetitle{
+  position: sticky;
+  top: 0;
+  font-size: .7rem;
+  z-index: 2;
+  padding: .5rem;
+  text-align: center;
+  background-color: rgba(128, 128, 128, 0.164);
+}
+
+.pagewrap{
+  background-image: url('/wallpapers.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.pagedetails{
+  bottom: 0;
+  padding: 14rem 1rem 6rem;
+  background-image: linear-gradient(rgba(0, 0, 0, 0.164), black);
+}
+
+.cardtitle{
+  padding-bottom: 0;
+  font-weight: 800;
+}
+
+.cardrating{
+  font-size: .5rem;
+}
+
+.carddetails{
+  font-size: 0.5rem;
+}
+
+.details{
+  width: 570px;
+  margin: 0;
+  font-size: .9rem;
+}
+
+.cardwrapper{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding: 0 0 2rem;
+}
+
+.cardwrapper>div{
+  flex-basis: 300px;
+}
+
+.innercardwrapper{
+  padding: 1rem;
+}
+
+.latest{
+  font-size: .8rem;
+  padding-left: 2rem;
+}
+
+.loginclose{
+  background-color: transparent;
+  position: absolute;
+  top: 0;
+  right: .5rem;
+}
+
+
+.catcard{
+  position: relative;
+}
+
+.catcard:hover{
+  cursor: pointer;
+}
+
+.addons{
+  cursor: pointer;
+}
+
+.cattext{
+  width: 100%;
+  position: absolute;
+  top: 0;
+  padding-left: 1rem;
+  background-image: linear-gradient(rgba(0, 0, 0, 0.822) 10%, transparent );
+}
+
+.category{
+  margin-top: 0;
+}
+
+.tag{
+  font-size: .6rem;
+  margin-bottom: 0;
+}
+
 @media screen and (max-width: 1200px) {
   .categorywrapper{
     width: 100%;
@@ -338,7 +466,7 @@
     flex-direction: column;
     justify-items: center;
     align-items: center;
-    padding-bottom: 1rem;
+    margin-bottom: 1rem;
   }
 
   .plans{
@@ -370,6 +498,27 @@
   .available{
     text-align: center;
   }
+
+  .threelogos{
+    width: 40%;
+  }
+
+  .herobundledetails{
+    visibility: hidden;
+  }
+
+  .innercardwrapper{
+    padding: 0 .5rem 2rem;
+}
+
+.catcontainer{
+    top: 0;
+    width: 100%;
+}
+
+.details{
+    width: 100%;
+}
 }
 
 @media screen and (max-width: 870px) {
