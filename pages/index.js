@@ -12,10 +12,10 @@ export default function Home({ data }) {
   let addons = useRef(null)
   
   const ToggleAddons = () => {
-    if (addons.style.display == 'block') {
+    if (addons.style.display === 'block') {
       addons.style.display = 'none'
       setToggletext('Show Add-ons')
-    } else if (addons.style.display == 'none') {
+    } else if (addons.style.display !== 'block') {
       addons.style.display = 'block'
       setToggletext('Hide Add-ons')
     }
