@@ -3,15 +3,14 @@ import styles from '../styles/Home.module.css'
 import Image from 'next/image'
 import LineSub from '../components/LineSub'
 import Footer from '../components/Footer'
-import { useRef, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 
 export default function Home({ data }) {
   const [toggletext, setToggletext] = useState('Hide Add-ons')
   let login = useRef(null)
-  let cont = useRef(null)
   let cd = useRef(null)
   let addons = useRef(null)
-  
+
   const ToggleAddons = () => {
     if (addons.style.display == 'block') {
       addons.style.display = 'none'
@@ -39,7 +38,6 @@ export default function Home({ data }) {
   const LoginForm = () => {
     if (window.innerWidth > 900) {
       login.style.display = 'block'
-      console.log(login)
     }
   }
 
@@ -48,8 +46,6 @@ export default function Home({ data }) {
       login.style.display = 'none'
     }
   }
-
-
 
   return (
     <div className={styles.container}>
@@ -63,7 +59,7 @@ export default function Home({ data }) {
         <div className={styles.logindiv}>
           <p className={styles.login} onClick={() => LoginForm()} >LOG IN</p>
           <form className={styles.loginform} ref={el => login = el}>
-            <p className={styles.loginclose} ref={el => cont = el} onClick={() => closeLogin()}>x</p>
+            <p className={styles.loginclose} onClick={() => closeLogin()}>x</p>
             <h4 className={styles.formtitle}>Log In</h4>
             <label>EMAIL</label><br/>
             <div className={styles.input}>
@@ -246,7 +242,7 @@ export default function Home({ data }) {
             
           </div>
           <div>
-              <p className={styles.addons} onClick={() => ToggleAddons()}>{toggletext}</p>
+              <p className={styles.hide} onClick={() => ToggleAddons()}>{toggletext}</p>
             </div>
         </div>
       </div>
