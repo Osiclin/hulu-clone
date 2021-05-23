@@ -3,7 +3,7 @@ import styles from '../styles/Home.module.css'
 import Image from 'next/image'
 import LineSub from '../components/LineSub'
 import Footer from '../components/Footer'
-import { useEffect, useRef, useState } from 'react'
+import { useRef, useState } from 'react'
 
 export default function Home({ data }) {
   const [toggletext, setToggletext] = useState('Hide Add-ons')
@@ -113,7 +113,7 @@ export default function Home({ data }) {
         </div>
         <div className={styles.categorywrapper}>
           <div className={styles.catcard} onClick={() => DisplayCat()}>
-            <Image src='https://www.hulu.com/static/hitch/s3/attachments/ckllond4i0i9w1u7ghnu91j1b-bobsburgers-category-tile-294x450-1x.jpg' alt="" width={294} height={400} />
+            <Image src='https://www.hulu.com/static/hitch/s3/attachments/ckllond4i0i9w1u7ghnu91j1b-bobsburgers-category-tile-294x450-1x.jpg' loading="eager" alt="" width={294} height={400} />
             <div className={styles.cattext}>
                 <p className={styles.tag}>Past & Current Seasons</p>
                 <h6 className={styles.category}>TV Shows</h6>
@@ -121,7 +121,7 @@ export default function Home({ data }) {
           </div>
 
           <div className={styles.catcard} onClick={() => DisplayCat()}>
-            <Image src='https://www.hulu.com/static/hitch/s3/attachments/cklms7f221g6z1u6ye8eurm1e-unitedstatesvsbillieholiday-category-tile-294x450-1x-1.jpg' alt="" width={294} height={400} />
+            <Image src='https://www.hulu.com/static/hitch/s3/attachments/cklms7f221g6z1u6ye8eurm1e-unitedstatesvsbillieholiday-category-tile-294x450-1x-1.jpg' loading="eager" alt="" width={294} height={400} />
             <div className={styles.cattext}>
                 <p className={styles.tag}>New & Classic</p>
                 <h6 className={styles.category}>Movies</h6>
@@ -129,7 +129,7 @@ export default function Home({ data }) {
           </div>
 
           <div className={styles.catcard} onClick={() => DisplayCat()}>
-            <Image src='https://www.hulu.com/static/hitch/s3/attachments/ckllpbyhp0pww1ua273ct30sb-solaropposites-category-tile-294x450-1x-1.jpg' alt="" width={294} height={400} />
+            <Image src='https://www.hulu.com/static/hitch/s3/attachments/ckllpbyhp0pww1ua273ct30sb-solaropposites-category-tile-294x450-1x-1.jpg' loading="eager" alt="" width={294} height={400} />
             <div className={styles.cattext}>
                 <p className={styles.tag}>Groundbreaking</p>
                 <h6 className={styles.category}>Hulu Originals</h6>
@@ -137,7 +137,7 @@ export default function Home({ data }) {
           </div>
 
           <div className={styles.catcard} onClick={() => DisplayCat()}>
-            <Image src='https://www.hulu.com/static/hitch/s3/attachments/cklms8tz01g9l1ub0lnnjocwk-cityonahill-category-tile-294x450-1x-1.jpg' alt="" width={294} height={400} />
+            <Image src='https://www.hulu.com/static/hitch/s3/attachments/cklms8tz01g9l1ub0lnnjocwk-cityonahill-category-tile-294x450-1x-1.jpg' loading="eager" alt="" width={294} height={400} />
             <div className={styles.cattext}>
                 <p className={styles.tag}>Add-on</p>
                 <h6 className={styles.category}>Premium</h6>
@@ -161,7 +161,9 @@ export default function Home({ data }) {
                         <div className={styles.cardwrapper}>
                             {
                                 movies.map((movie, index) => <div key={index} className={styles.innercardwrapper}>
-                                    <Image src={`https://image.tmdb.org/t/p/w185/${movie.poster_path}`} width={185} height={278} />
+                                    <div className={styles.imgcard}>
+                                      <Image src={`https://image.tmdb.org/t/p/w185/${movie.poster_path}`} width={185} height={278} />
+                                    </div>
                                     <p className={styles.cardtitle}>{movie.title}</p>
                                     <p className={styles.cardrating}>Rating {movie.vote_average}</p>
                                     <p className={styles.carddetails}>{movie.overview}</p>
