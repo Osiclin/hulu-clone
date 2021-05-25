@@ -11,6 +11,7 @@ export default function Home({ data }) {
   let login = useRef(null)
   let cd = useRef(null)
   let addons = useRef(null)
+  let container = useRef(null)
   
   const ToggleAddons = () => {
     if (addons.style.display === 'block') {
@@ -29,7 +30,8 @@ export default function Home({ data }) {
     }
 
   const DisplayCat = (e) => {
-    console.log(e.target.className)
+    container.style.overflowY ='hidden';
+    container.style.height = '100vh';
     if (e.target.className == 'Home_tvshows__167Wt') {
       setCatContDetails('TV Shows')
     } else if (e.target.className == 'Home_movies__j7ZMg') {
@@ -44,6 +46,8 @@ export default function Home({ data }) {
 
   const DisplayClose = () =>{
     cd.style.display = 'none'
+    container.style.overflowY ='unset';
+    container.style.height = 'unset';
   }
 
   const LoginForm = () => {
@@ -59,7 +63,7 @@ export default function Home({ data }) {
   }
 
   return (
-    <div className={styles.container}>
+    <div className={styles.container} ref={el => container = el}>
       <Head>
         <title>Hulu</title>
         <meta name="description" content="hulu look-alike app made by osita ezeigbo" />
