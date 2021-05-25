@@ -6,6 +6,7 @@ import Footer from '../components/Footer'
 import { useRef, useState } from 'react'
 
 export default function Home({ data }) {
+  const [catContDetails, setCatContDetails] = useState('')
   const [toggletext, setToggletext] = useState('Hide Add-ons')
   let login = useRef(null)
   let cd = useRef(null)
@@ -27,7 +28,17 @@ export default function Home({ data }) {
         movies.push(data.results[i])
     }
 
-  const DisplayCat = () => {
+  const DisplayCat = (e) => {
+    console.log(e.target.className)
+    if (e.target.className == 'Home_tvshows__167Wt') {
+      setCatContDetails('TV Shows')
+    } else if (e.target.className == 'Home_movies__j7ZMg') {
+      setCatContDetails('Movies')
+    } else if (e.target.className == 'Home_huluoriginals__1C5zH') {
+      setCatContDetails('Hulu Originals')
+    } else if (e.target.className == 'Home_premium__2F5_M') {
+      setCatContDetails('Premium')
+    }
     cd.style.display = 'block'
   }
 
@@ -112,7 +123,8 @@ export default function Home({ data }) {
           <p className={styles.catp}>Stream full seasons of exclusive series, current-season episodes, hit movies, Hulu Originals, kids shows, and more.</p>
         </div>
         <div className={styles.categorywrapper}>
-          <div className={styles.catcard} onClick={() => DisplayCat()}>
+          <div className={styles.catcard}>
+            <div className={styles.tvshows} onClick={(e) => DisplayCat(e)}></div>
             <Image src='https://www.hulu.com/static/hitch/s3/attachments/ckllond4i0i9w1u7ghnu91j1b-bobsburgers-category-tile-294x450-1x.jpg' loading="eager" alt="" width={294} height={400} />
             <div className={styles.cattext}>
                 <p className={styles.tag}>Past & Current Seasons</p>
@@ -120,7 +132,8 @@ export default function Home({ data }) {
             </div>
           </div>
 
-          <div className={styles.catcard} onClick={() => DisplayCat()}>
+          <div className={styles.catcard}>
+          <div className={styles.movies} onClick={(e) => DisplayCat(e)}></div>
             <Image src='https://www.hulu.com/static/hitch/s3/attachments/cklms7f221g6z1u6ye8eurm1e-unitedstatesvsbillieholiday-category-tile-294x450-1x-1.jpg' loading="eager" alt="" width={294} height={400} />
             <div className={styles.cattext}>
                 <p className={styles.tag}>New & Classic</p>
@@ -128,7 +141,8 @@ export default function Home({ data }) {
             </div>
           </div>
 
-          <div className={styles.catcard} onClick={() => DisplayCat()}>
+          <div className={styles.catcard}>
+          <div className={styles.huluoriginals} onClick={(e) => DisplayCat(e)}></div>
             <Image src='https://www.hulu.com/static/hitch/s3/attachments/ckllpbyhp0pww1ua273ct30sb-solaropposites-category-tile-294x450-1x-1.jpg' loading="eager" alt="" width={294} height={400} />
             <div className={styles.cattext}>
                 <p className={styles.tag}>Groundbreaking</p>
@@ -136,44 +150,45 @@ export default function Home({ data }) {
             </div>
           </div>
 
-          <div className={styles.catcard} onClick={() => DisplayCat()}>
+          <div className={styles.catcard}>
+          <div className={styles.premium} onClick={(e) => DisplayCat(e)}></div>
             <Image src='https://www.hulu.com/static/hitch/s3/attachments/cklms8tz01g9l1ub0lnnjocwk-cityonahill-category-tile-294x450-1x-1.jpg' loading="eager" alt="" width={294} height={400} />
             <div className={styles.cattext}>
                 <p className={styles.tag}>Add-on</p>
                 <h6 className={styles.category}>Premium</h6>
+            </div>
           </div>
-        </div>
         </div>
       </div>
 
 
       <div className={styles.catcontainer} ref={el => cd = el}>
-            <div className={styles.pagetitle}>Movies<span className={styles.close} onClick={() => DisplayClose()}>X</span></div>
-                <div className={styles.wrapper}>
-                    <div className={styles.pagewrap}> 
-                        <div className={styles.pagedetails}>
-                            <h1>Movies</h1>
-                            <p className={styles.details}>Stream box office hits, classic cinema, acclaimed indies, inspiring documentaries, and much more.</p>
-                        </div>
-                    </div>
-                    <div>
-                        <h3 className={styles.latest}>Latest</h3>
-                        <div className={styles.cardwrapper}>
-                            {
-                                movies.map((movie, index) => <div key={index} className={styles.innercardwrapper}>
-                                    <div className={styles.imgcard}>
-                                      <Image src={`https://image.tmdb.org/t/p/w185/${movie.poster_path}`} width={185} height={278} />
-                                    </div>
-                                    <p className={styles.cardtitle}>{movie.title}</p>
-                                    <p className={styles.cardrating}>Rating {movie.vote_average}</p>
-                                    <p className={styles.carddetails}>{movie.overview}</p>
-                                </div>
-                                )
-                            }
-                        </div>
+        <div className={styles.pagetitle}>{catContDetails}<span className={styles.close} onClick={() => DisplayClose()}>X</span></div>
+          <div className={styles.wrapper}>
+            <div className={styles.pagewrap}> 
+              <div className={styles.pagedetails}>
+                  <h1>{catContDetails}</h1>
+                  <p className={styles.details}>Stream box office hits, classic cinema, acclaimed indies, inspiring documentaries, and much more.</p>
+              </div>
+            </div>
+            <div>
+              <h3 className={styles.latest}>Latest</h3>
+              <div className={styles.cardwrapper}>
+                {
+                  movies.map((movie, index) => <div key={index} className={styles.innercardwrapper}>
+                      <div className={styles.imgcard}>
+                        <Image src={`https://image.tmdb.org/t/p/w185/${movie.poster_path}`} width={185} height={278} />
                       </div>
+                      <p className={styles.cardtitle}>{movie.title}</p>
+                      <p className={styles.cardrating}>Rating {movie.vote_average}</p>
+                      <p className={styles.carddetails}>{movie.overview}</p>
                   </div>
+                  )
+                }
+            </div>
+          </div>
         </div>
+      </div>
       
       {/* <CategoryDisplay data={movies} ref={el => cd = el} />       */}
       <div className={styles.plans}>

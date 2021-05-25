@@ -427,9 +427,16 @@
   right: .5rem;
 }
 
-
 .catcard{
   position: relative;
+}
+
+.movies, .tvshows, .huluoriginals, .premium{
+  position: absolute;
+  background-color: transparent;
+  width: 100%;
+  height: 100%;
+  z-index: 3;
 }
 
 .catcard:hover{
