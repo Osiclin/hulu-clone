@@ -5,14 +5,17 @@ import LineSub from '../components/LineSub'
 import Footer from '../components/Footer'
 import { useRef, useState } from 'react'
 
-export default function Home({ data }) {
+export default function Home({ data, tvseries }) {
   const [catContDetails, setCatContDetails] = useState('')
   const [toggletext, setToggletext] = useState('Hide Add-ons')
+  const [a, setA] = useState([])
   let login = useRef(null)
   let cd = useRef(null)
   let addons = useRef(null)
   let container = useRef(null)
   
+  console.log(tvseries.results)
+
   const ToggleAddons = () => {
     if (addons.style.display === 'block') {
       addons.style.display = 'none'
@@ -25,21 +28,40 @@ export default function Home({ data }) {
 
   //category card
   let movies = []
-    for (let i = 0; i < 18; i++) {
-        movies.push(data.results[i])
-    }
+  for (let i = 0; i < 10; i++) {
+      movies.push(data.results[i])
+  }
+
+  let tvshows = []
+  for (let i = 0; i < 10; i++) {
+    tvshows.push(tvseries.results[i])
+  }
+
+  let premium = []
+  for (let i = 10; i < 20; i++) {
+    premium.push(data.results[i])
+  }
+
+  let huluoriginals = []
+  for (let i = 10; i < 20; i++) {
+      huluoriginals.push(tvseries.results[i])
+  }
 
   const DisplayCat = (e) => {
     container.style.overflowY ='hidden';
     container.style.height = '100vh';
     if (e.target.className == 'Home_tvshows__167Wt') {
       setCatContDetails('TV Shows')
+      setA(tvshows)
     } else if (e.target.className == 'Home_movies__j7ZMg') {
       setCatContDetails('Movies')
+      setA(movies)
     } else if (e.target.className == 'Home_huluoriginals__1C5zH') {
       setCatContDetails('Hulu Originals')
+      setA(huluoriginals)
     } else if (e.target.className == 'Home_premium__2F5_M') {
       setCatContDetails('Premium')
+      setA(premium)
     }
     cd.style.display = 'block'
   }
@@ -179,7 +201,7 @@ export default function Home({ data }) {
               <h3 className={styles.latest}>Latest</h3>
               <div className={styles.cardwrapper}>
                 {
-                  movies.map((movie, index) => <div key={index} className={styles.innercardwrapper}>
+                  a.map((movie, index) => <div key={index} className={styles.innercardwrapper}>
                       <div className={styles.imgcard}>
                         <Image src={`https://image.tmdb.org/t/p/w185/${movie.poster_path}`} width={185} height={278} />
                       </div>
@@ -274,11 +296,13 @@ export default function Home({ data }) {
 
 export async function getServerSideProps() {
     const res = await fetch('https://api.themoviedb.org/3/movie/now_playing?api_key=a9a890a1db5db1cb0dfbcdffbce0b762&language=en-US&page=1')
+    const restv = await fetch('https://api.themoviedb.org/3/tv/popular?api_key=a9a890a1db5db1cb0dfbcdffbce0b762&language=en-US&page=1')
     const data = await res.json()
+    const tvseries = await restv.json()
 
     return{
       props: {
-        data
+        data, tvseries
       }
     }
 }
